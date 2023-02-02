@@ -1,3 +1,10 @@
+from prettytable import PrettyTable, DOUBLE_BORDER
+
+usersTable = PrettyTable(["Users", "Password"])
+usersTable.align = "l"
+usersTable.set_style(DOUBLE_BORDER)
+
+
 class User:
     def __init__(self, name, password):
         self.name = name
@@ -10,7 +17,7 @@ users = []
 def menu():
     while True:
         menuOp = int(
-            input("1-Login\n2-Register\n3-Show Users\n4-Exit\nOption:"))
+            input("1-Login\n2-Register\n3-Show Users\n4-Probar pretty Table\n5-Exit\nOption:"))
         match menuOp:
             case 1:
                 login()
@@ -19,6 +26,10 @@ def menu():
             case 3:
                 showUsers()
             case 4:
+                usersTable.add_row(["Pepe", "1234"])
+                usersTable.add_row(["Pepe", "1234"])
+                print(usersTable)
+            case 5:
                 return False
             case _:
                 print("You inserted wrong number")
@@ -42,8 +53,11 @@ def addUser(login, password):
 
 
 def showUsers():
+    usersTable.clear_rows()
     for userf in users:
-        print(userf.name)
+        usersTable.add_row([userf.name, userf.password])
+    print(usersTable)
+    input("Press enter to continue")
 
 
 def register():
