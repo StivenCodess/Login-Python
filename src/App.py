@@ -1,7 +1,8 @@
-
-import Register
-import ShowUsers
 import Login
+import ShowUsers
+import Register
+from colorama import Fore, init, Style
+init(autoreset=True)
 
 
 users = []
@@ -9,15 +10,16 @@ users = []
 
 def menu():
     while True:
+        print(Fore.LIGHTBLUE_EX+Style.BRIGHT+"-------MENU-------")
         menuOp = int(
-            input("1-Login\n2-Register\n3-Show Users\n4-Exit\nOption:"))
+            input(Style.BRIGHT+"1-Login\n2-Register\n3-Show Users\n4-Exit" + Fore.GREEN + "\nOption:"))
         match menuOp:
             case 1:
-                Login.login(users)
+                Login.login(users, Fore, Style)
             case 2:
-                Register.register(users)
+                Register.register(users, Fore, Style)
             case 3:
-                ShowUsers.showUsers(users)
+                ShowUsers.showUsers(users, Fore, Style, init)
             case 4:
                 return False
             case _:

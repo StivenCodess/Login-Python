@@ -4,10 +4,10 @@ class User:
         self.password = password
 
 
-def register(users):
-    print("-----REGISTER-----")
-    username = input("Insert Username: ")
-    password = input("Insert Password: ")
+def register(users, Fore, Style):
+    print(Fore.LIGHTBLUE_EX+Style.BRIGHT + "-------REGISTER-------")
+    username = input(Style.BRIGHT+"Insert Username: ")
+    password = input(Style.BRIGHT+"Insert Password: ")
     addUser(username, password, users)
 
 
